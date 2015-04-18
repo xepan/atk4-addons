@@ -1,6 +1,7 @@
 <?php
 namespace gridqsearch;
 class Controller_GridQSearch extends \AbstractController {
+    public $count=0;
     function init(){
         parent::init();
 
