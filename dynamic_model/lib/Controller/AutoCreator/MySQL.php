@@ -37,7 +37,7 @@ class Controller_AutoCreator_MySQL extends Controller_AutoCreator_Abstract
     public $default_type = 'varchar({length|255})';
 
     // MySQL engine
-    public $engine = 'MyISAM'; // MyISAM | INNODB | etc.
+    public $engine = 'INNODB'; // MyISAM | INNODB | etc.
 
     // array of SQL templates used
     // supports one level deep nested action templates
@@ -141,7 +141,7 @@ class Controller_AutoCreator_MySQL extends Controller_AutoCreator_Abstract
             // add foreign key to referenced model
             // it looks that it's impossible to modify keys, so we only do this
             // when creating new field
-            if ($add) {
+            if ($add or $this->force_create_foreignkeys) {
                 $this->addForeignKey($model, $field, $ref_model);
             }
 
